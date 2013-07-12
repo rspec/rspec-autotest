@@ -1,6 +1,6 @@
 require "rspec/autotest/version"
 
-module Rspec
+module RSpec
   module Autotest
     # Your code goes here...
   end
