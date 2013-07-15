@@ -3,7 +3,7 @@ require "autotest/rspec2"
 
 describe Autotest::Rspec2 do
   let(:rspec_autotest) { Autotest::Rspec2.new }
-  let(:spec_cmd) { File.expand_path("../../../exe/rspec", __FILE__) }
+  let(:spec_cmd) { RSpec::Core.path_to_executable }
   let(:ruby_cmd) { "/path/to/ruby" }
 
   before do
