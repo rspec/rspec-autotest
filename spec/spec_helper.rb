@@ -3,6 +3,9 @@ require 'rspec/autorun'
 require 'rspec/autotest'
 require 'aruba/api'
 
+require 'coveralls'
+Coveralls.wear!
+
 if RUBY_PLATFORM == 'java'
   # Works around https://jira.codehaus.org/browse/JRUBY-5678
   require 'fileutils'
