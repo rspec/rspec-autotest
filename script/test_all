@@ -24,7 +24,7 @@ echo "Bundling Standalone so we can run the specs w/o bundler loaded"
 bundle install --standalone --binstubs
 
 echo "Running all..."
-bin/rspec spec -b --format progress --profile
+bin/rspec spec -b --format progress
 
 echo
 echo "--------------------------------------------------------------------"
@@ -37,13 +37,3 @@ else
     NO_COVERALLS=1 bin/rspec $file -b --format progress
   done
 fi
-
-# Prepare RUBYOPT for scenarios that are shelling out to ruby,
-# and PATH for those that are using `rspec` or `rake`.
-# RUBYOPT="-I${PWD}/bundle -rbundler/setup" \
-#   PATH="${PWD}/bin:$PATH" \
-#   bin/cucumber
-
-# For now, use this instead, due to a bug in bundler:
-# https://github.com/carlhuda/bundler/issues/2382
-bundle exec bin/cucumber
