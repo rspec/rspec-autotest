@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'rspec/autorun'
+require 'rspec/autotest'
 require 'aruba/api'
 
 if RUBY_PLATFORM == 'java'

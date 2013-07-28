@@ -61,7 +61,7 @@ describe Autotest::Rspec2 do
       expect(cmd).to match(%r("/path/to/ruby"))
     end
 
-    it "gives '--tty' to #{Autotest::Rspec2::RSPEC_EXECUTABLE}, not '--autotest'" do
+    it "gives '--tty' to #{ RSpec::Core.path_to_executable }, not '--autotest'" do
       cmd = rspec_autotest.make_test_cmd(@files_to_test)
       expect(cmd).to match(' --tty ')
       expect(cmd).not_to match(' --autotest ')
