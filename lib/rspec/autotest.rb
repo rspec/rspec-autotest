@@ -1,15 +1,10 @@
-require 'rspec/autotest/version'
+require 'rspec/core'
 require 'autotest'
-
-module RSpec
-  module Autotest
-  end
-end
 
 # Derived from the `Autotest` class, extends the `autotest` command to work
 # with RSpec.
 #
-class Autotest::Rspec2 < ::Autotest
+class Autotest::Rspec2 < Autotest
 
   def initialize
     super()
