@@ -22,7 +22,14 @@ directory or your home directory:
 
 ## Rails
 
-The `autotest` will autodetect RSpec and Rails after you run the `rails
+To use RSpec and Rails with autotest, bring in the `autotest-rails` gem:
+
+```ruby
+# Gemfile
+gem 'autotest-rails', :group => [:development, :test]
+```
+
+`autotest` will now autodetect RSpec and Rails after you run the `rails
 generate rspec:install` command.
 
 ## Upgrading from previous versions of rspec
