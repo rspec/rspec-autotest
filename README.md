@@ -32,14 +32,6 @@ gem 'autotest-rails', :group => [:development, :test]
 `autotest` will now autodetect RSpec and Rails after you run the `rails
 generate rspec:install` command.
 
-## Upgrading from previous versions of rspec
-
-Previous versions of RSpec used a different mechanism for telling autotest to
-invoke RSpec's Autotest extension: it generated an `autotest/discover.rb` file
-in the project's root directory. This is no longer necessary with the new
-approach of RSpec looking for a `.rspec` file, so feel free to delete the
-`autotest/discover.rb` file in the project root if you have one.
-
 ## Gotchas
 
 ### Invalid Option: --tty
