@@ -4,7 +4,7 @@ gemspec
 
 %w[rspec rspec-core rspec-expectations rspec-mocks].each do |lib|
   library_path = File.expand_path("../../#{lib}", __FILE__)
-  if File.exist?(library_path)
+  if File.exist?(library_path) && !ENV['USE_GIT_REPOS']
     gem lib, :path => library_path
   else
     gem lib, :git => "git://github.com/rspec/#{lib}.git", :branch => '2-99-maintenance'
@@ -20,5 +20,8 @@ end
 
 ### dep for ci/coverage
 gem 'coveralls', :require => false
+
+# mime-types 2 requires ruby 1.8, so we have to specify an old version.
+gem 'mime-types', '~> 1.0'
 
 eval File.read('Gemfile-custom') if File.exist?('Gemfile-custom')
