@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 1.8.7'
 
-  spec.add_dependency "rspec-core", ">= 2.99.0.pre"
+  spec.add_dependency "rspec-core", ">= 2.99.0.beta1", "< 4.0.0"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake",    "~> 10.0.0"
