@@ -2,12 +2,15 @@ source "https://rubygems.org"
 
 gemspec
 
-%w[rspec rspec-core rspec-expectations rspec-mocks].each do |lib|
+%w[rspec rspec-core rspec-expectations rspec-mocks rspec-support].each do |lib|
+  branch = ENV.fetch('RSPEC_BRANCH', 'master')
+  next if branch == '2-99-maintenance' && lib == 'rspec-support'
+
   library_path = File.expand_path("../../#{lib}", __FILE__)
   if File.exist?(library_path) && !ENV['USE_GIT_REPOS']
     gem lib, :path => library_path
   else
-    gem lib, :git => "git://github.com/rspec/#{lib}.git", :branch => '2-99-maintenance'
+    gem lib, :git => "git://github.com/rspec/#{lib}.git", :branch => branch
   end
 end
 
