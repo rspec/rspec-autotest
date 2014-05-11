@@ -16,4 +16,8 @@ rvm:
 env:
   - RSPEC_BRANCH=master
   - RSPEC_BRANCH=2-99-maintenance
+matrix:
+  allow_failures:
+    - rvm: rbx
+  fast_finish: true
 
