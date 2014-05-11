@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'rspec/autorun'
 require 'rspec/autotest'
 require 'aruba/api'
 
@@ -18,7 +17,7 @@ RSpec.configure do |c|
   end
 
   # runtime options
-  c.treat_symbols_as_metadata_keys_with_true_values = true
+  c.treat_symbols_as_metadata_keys_with_true_values = true if RSpec::Core::Version::STRING.to_f < 3
   c.filter_run :focus
   c.run_all_when_everything_filtered = true
 end
