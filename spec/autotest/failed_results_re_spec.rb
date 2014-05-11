@@ -42,7 +42,7 @@ describe "failed_results_re for autotest" do
 
   context "with color enabled" do
     before do
-      RSpec.configuration.stub(:color_enabled? => true)
+      allow(RSpec.configuration).to receive(:color_enabled?).and_return(true)
     end
 
     include_examples "autotest failed_results_re"
@@ -50,7 +50,7 @@ describe "failed_results_re for autotest" do
 
   context "with color disabled" do
     before do
-      RSpec.configuration.stub(:color_enabled? => false)
+      allow(RSpec.configuration).to receive(:color_enabled?).and_return(false)
     end
 
     include_examples "autotest failed_results_re"

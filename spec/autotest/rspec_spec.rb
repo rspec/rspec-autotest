@@ -17,7 +17,7 @@ describe Autotest::Rspec2 do
 
   describe "commands" do
     before do
-      rspec_autotest.stub(:ruby => ruby_cmd)
+      allow(rspec_autotest).to receive(:ruby).and_return(ruby_cmd)
       files = %w[file_one file_two]
       @files_to_test = {
         files[0] => [],
