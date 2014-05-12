@@ -5,16 +5,30 @@ describe "failed_results_re for autotest" do
     group = RSpec::Core::ExampleGroup.describe("group")
     group.example("example") { yield }
     io = StringIO.new
-    formatter = RSpec::Core::Formatters::BaseTextFormatter.new(io)
-    reporter = RSpec::Core::Reporter.new(formatter)
-
-    group.run(reporter)
-    reporter.report(1, nil) {}
+    run_group(group, io)
     io.string
+  end
+
+  if RSpec::Core::Version::STRING.to_f >= 3
+    def run_group(group, io)
+      options = RSpec::Core::ConfigurationOptions.new([])
+      config  = RSpec::Core::Configuration.new
+      runner  = RSpec::Core::Runner.new(options, config)
+      runner.setup(io, io)
+      runner.run_specs([group])
+    end
+  else
+    def run_group(group, io)
+      formatter = RSpec::Core::Formatters::BaseTextFormatter.new(io)
+      reporter = RSpec::Core::Reporter.new(formatter)
+      group.run(reporter)
+      reporter.report(1, nil) { }
+    end
   end
 
   shared_examples "autotest failed_results_re" do
     it "matches a failure" do
+      pending "Awaiting rspec-core fixups (#1525)"
       output = run_example { fail }
       expect(output).to match(Autotest::Rspec2.new.failed_results_re)
       expect(output).to include(__FILE__.sub(File.expand_path('.'),'.'))
@@ -29,15 +43,15 @@ describe "failed_results_re for autotest" do
 
   context "with color enabled" do
     before do
-      RSpec.configuration.stub(:color_enabled? => true)
+      allow(RSpec.configuration).to receive(:color_enabled?).and_return(true)
     end
 
     include_examples "autotest failed_results_re"
   end
 
-  context "with color disabled " do
+  context "with color disabled" do
     before do
-      RSpec.configuration.stub(:color_enabled? => false)
+      allow(RSpec.configuration).to receive(:color_enabled?).and_return(false)
     end
 
     include_examples "autotest failed_results_re"

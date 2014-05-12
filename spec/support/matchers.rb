@@ -9,8 +9,14 @@ RSpec::Matchers.define :map_specs do |specs|
     @file = file
   end
 
-  failure_message_for_should do
-    "expected #{@autotest.class} to map #{@specs.inspect} to #{@file.inspect}\ngot #{@actual.inspect}"
+  if respond_to?(:failure_message)
+    failure_message do
+      "expected #{@autotest.class} to map #{@specs.inspect} to #{@file.inspect}\ngot #{@actual.inspect}"
+    end
+  else
+    failure_message_for_should do
+      "expected #{@autotest.class} to map #{@specs.inspect} to #{@file.inspect}\ngot #{@actual.inspect}"
+    end
   end
 
   def prepare(autotest)

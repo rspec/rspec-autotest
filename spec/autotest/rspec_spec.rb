@@ -7,7 +7,7 @@ describe Autotest::Rspec2 do
   let(:ruby_cmd) { "/path/to/ruby" }
 
   before do
-    File.stub(:exist?) { false }
+    allow(File).to receive(:exist?) { false }
   end
 
   it "uses autotest's prefix" do
@@ -17,7 +17,7 @@ describe Autotest::Rspec2 do
 
   describe "commands" do
     before do
-      rspec_autotest.stub(:ruby => ruby_cmd)
+      allow(rspec_autotest).to receive(:ruby).and_return(ruby_cmd)
       files = %w[file_one file_two]
       @files_to_test = {
         files[0] => [],
@@ -128,7 +128,7 @@ describe Autotest::Rspec2 do
       ['filename.rb', './filename.rb', File.expand_path('filename.rb')].each do |file|
         @files_to_test[file] = []
       end
-      expect(rspec_autotest.normalize(@files_to_test)).to have(1).file
+      expect(rspec_autotest.normalize(@files_to_test).size).to eq(1)
     end
   end
 end
