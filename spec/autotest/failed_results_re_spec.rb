@@ -28,7 +28,6 @@ describe "failed_results_re for autotest" do
 
   shared_examples "autotest failed_results_re" do
     it "matches a failure" do
-      pending "Awaiting rspec-core fixups (#1525)"
       output = run_example { fail }
       expect(output).to match(Autotest::Rspec2.new.failed_results_re)
       expect(output).to include(__FILE__.sub(File.expand_path('.'),'.'))
