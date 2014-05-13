@@ -1,12 +1,12 @@
 require "spec_helper"
-require "autotest/rails_rspec2"
+require "autotest/rails_rspec"
 
-describe Autotest::RailsRspec2 do
+describe Autotest::RailsRSpec do
 
-  let(:rails_rspec2_autotest) { Autotest::RailsRspec2.new }
+  let(:rails_rspec_autotest) { Autotest::RailsRSpec.new }
 
   describe 'exceptions' do
-    let(:exceptions_regexp) { rails_rspec2_autotest.exceptions }
+    let(:exceptions_regexp) { rails_rspec_autotest.exceptions }
 
     it "matches './log/test.log'" do
       expect(exceptions_regexp).to match('./log/test.log')
@@ -27,8 +27,8 @@ describe Autotest::RailsRspec2 do
 
   describe 'mappings' do
     it 'runs model specs when support files change' do
-      rails_rspec2_autotest.find_order = %w(spec/models/user_spec.rb spec/support/blueprints.rb)
-      expect(rails_rspec2_autotest.test_files_for('spec/support/blueprints.rb')).to(
+      rails_rspec_autotest.find_order = %w(spec/models/user_spec.rb spec/support/blueprints.rb)
+      expect(rails_rspec_autotest.test_files_for('spec/support/blueprints.rb')).to(
         include('spec/models/user_spec.rb'))
     end
   end

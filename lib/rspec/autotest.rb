@@ -4,7 +4,7 @@ require 'autotest'
 # Derived from the `Autotest` class, extends the `autotest` command to work
 # with RSpec.
 #
-class Autotest::Rspec2 < Autotest
+class Autotest::RSpec < Autotest
 
   def initialize
     super()
@@ -44,7 +44,7 @@ class Autotest::Rspec2 < Autotest
   # Overrides Autotest's implementation to generate the rspec command to run
   def make_test_cmd(files_to_test)
     files_to_test.empty? ? '' :
-      %|#{prefix}"#{ruby}"#{suffix} -S "#{RSpec::Core.path_to_executable}" --tty #{normalize(files_to_test).keys.flatten.map { |f| %|"#{f}"|}.join(' ')}|
+      %|#{prefix}"#{ruby}"#{suffix} -S "#{::RSpec::Core.path_to_executable}" --tty #{normalize(files_to_test).keys.flatten.map { |f| %|"#{f}"|}.join(' ')}|
   end
 
   # Generates a map of filenames to Arrays for Autotest

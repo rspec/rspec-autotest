@@ -1,8 +1,8 @@
 require "spec_helper"
-require "autotest/rspec2"
+require "autotest/rspec"
 
-describe Autotest::Rspec2 do
-  let(:rspec_autotest) { Autotest::Rspec2.new }
+describe Autotest::RSpec do
+  let(:rspec_autotest) { Autotest::RSpec.new }
   let(:spec_cmd) { RSpec::Core.path_to_executable }
   let(:ruby_cmd) { "/path/to/ruby" }
 
