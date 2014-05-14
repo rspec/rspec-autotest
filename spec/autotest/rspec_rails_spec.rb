@@ -1,9 +1,9 @@
 require "spec_helper"
 require "autotest/rails_rspec"
 
-describe Autotest::RailsRSpec do
+describe Autotest::RailsRspec do
 
-  let(:rails_rspec_autotest) { Autotest::RailsRSpec.new }
+  let(:rails_rspec_autotest) { Autotest::RailsRspec.new }
 
   describe 'exceptions' do
     let(:exceptions_regexp) { rails_rspec_autotest.exceptions }

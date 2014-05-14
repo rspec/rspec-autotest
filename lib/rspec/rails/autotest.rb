@@ -25,7 +25,7 @@ $:.push(*Dir["vendor/rails/*/lib"])
 require 'active_support/core_ext'
 require 'autotest/rspec'
 
-class Autotest::RailsRSpec < Autotest::RSpec
+class Autotest::RailsRspec < Autotest::Rspec
 
   def initialize
     super

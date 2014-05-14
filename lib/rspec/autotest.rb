@@ -4,8 +4,7 @@ require 'autotest'
 # Derived from the `Autotest` class, extends the `autotest` command to work
 # with RSpec.
 #
-class Autotest::RSpec < Autotest
-
+class Autotest::Rspec < Autotest
   def initialize
     super()
     clear_mappings
