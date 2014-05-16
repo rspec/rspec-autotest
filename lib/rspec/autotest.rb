@@ -4,8 +4,7 @@ require 'autotest'
 # Derived from the `Autotest` class, extends the `autotest` command to work
 # with RSpec.
 #
-class Autotest::Rspec2 < Autotest
-
+class Autotest::Rspec < Autotest
   def initialize
     super()
     clear_mappings
@@ -13,7 +12,7 @@ class Autotest::Rspec2 < Autotest
 
     # Example for Ruby 1.8: http://rubular.com/r/AOXNVDrZpx
     # Example for Ruby 1.9: http://rubular.com/r/85ag5AZ2jP
-    self.failed_results_re = /^\s*\d+\).*\n\s+(?:\e\[\d*m)?Failure.*(\n(?:\e\[\d*m)?\s+#\s(.*)?:\d+(?::.*)?(?:\e\[\d*m)?)+$/m
+    self.failed_results_re = /^\s*\d+\).*\n\s+(?:\e\[\d*m)?Failure.*(\n(?:(?:\e\[\d*m)|(?:\s))+#\s(.*)?:\d+(?::.*)?(?:\e\[\d*m)?)+$/m
     self.completed_re = /\n(?:\e\[\d*m)?\d* examples?/m
   end
 
@@ -44,7 +43,7 @@ class Autotest::Rspec2 < Autotest
   # Overrides Autotest's implementation to generate the rspec command to run
   def make_test_cmd(files_to_test)
     files_to_test.empty? ? '' :
-      %|#{prefix}"#{ruby}"#{suffix} -S "#{RSpec::Core.path_to_executable}" --tty #{normalize(files_to_test).keys.flatten.map { |f| %|"#{f}"|}.join(' ')}|
+      %|#{prefix}"#{ruby}"#{suffix} -S "#{::RSpec::Core.path_to_executable}" --tty #{normalize(files_to_test).keys.flatten.map { |f| %|"#{f}"|}.join(' ')}|
   end
 
   # Generates a map of filenames to Arrays for Autotest

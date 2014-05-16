@@ -23,16 +23,16 @@
 $:.push(*Dir["vendor/rails/*/lib"])
 
 require 'active_support/core_ext'
-require 'autotest/rspec2'
+require 'autotest/rspec'
 
-class Autotest::RailsRspec2 < Autotest::Rspec2
+class Autotest::RailsRspec < Autotest::Rspec
 
   def initialize
     super
-    setup_rails_rspec2_mappings
+    setup_rails_rspec_mappings
   end
 
-  def setup_rails_rspec2_mappings
+  def setup_rails_rspec_mappings
     %w{coverage/ db/ doc/ log/ public/ script/ tmp/ vendor/rails vendor/plugins vendor/gems}.each do |exception|
       add_exception(/^([\.\/]*)?#{exception}/)
     end
