@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe "failed_results_re for autotest" do
   def run_example
     group = RSpec::Core::ExampleGroup.describe("group")

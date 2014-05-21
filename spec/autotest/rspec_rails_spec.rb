@@ -1,4 +1,3 @@
-require "spec_helper"
 require "autotest/rails_rspec"
 
 describe Autotest::RailsRspec do

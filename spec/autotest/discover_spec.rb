@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe "autotest/discover.rb" do
   it "adds 'rspec' to the list of discoveries" do
     expect(Autotest).to receive(:add_discovery)
