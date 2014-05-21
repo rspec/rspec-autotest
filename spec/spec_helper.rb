@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'rspec/autotest'
-require 'aruba/api'
 
 if RUBY_PLATFORM == 'java'
   # Works around https://jira.codehaus.org/browse/JRUBY-5678

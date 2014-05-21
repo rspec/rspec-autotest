@@ -5,7 +5,7 @@ require 'autotest'
 # with RSpec.
 #
 class Autotest
-  class Rspec < Autotest
+  class Rspec < self
     def initialize
       super()
       clear_mappings
