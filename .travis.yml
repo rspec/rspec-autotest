@@ -3,21 +3,25 @@ script: "script/test_all 2>&1"
 bundler_args: "--standalone --binstubs"
 rvm:
   - 1.8.7
+  - ree
   - 1.9.2
   - 1.9.3
   - 2.0.0
-  - 2.1.0
-  - 2.1.1
   - 2.1.2
-  - ree
   - jruby-18mode
-  - jruby
+  - jruby-19mode
   - rbx
+  - rbx-head
+  - jruby-head
+  - ruby-head
 env:
   - RSPEC_BRANCH=master
   - RSPEC_BRANCH=2-99-maintenance
 matrix:
   allow_failures:
     - rvm: rbx
+    - rvm: jruby-head
+    - rvm: rbx-head
+    - rvm: ruby-head
   fast_finish: true
 
