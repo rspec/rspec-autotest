@@ -37,7 +37,6 @@ class Autotest
     def setup_rails_rspec_mappings
       IGNORED_FOLDERS.each { |exception| add_exception(/^([\.\/]*)?#{exception}/) }
 
-
       clear_mappings
 
       add_mapping(%r{\A(test|spec)/fixtures/(.*).yml\z}) { |_, m|
