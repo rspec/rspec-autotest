@@ -34,6 +34,13 @@ generate rspec:install` command.
 
 ## Gotchas
 
+### Autotest style autotest/rspec_rspec2 doesn't seem to exist. Aborting.
+
+This happens if you're using rspec-3.x + rspec-autotest-1.x and you
+still have rspec-core-2.x installed. Unfortunately, the only way to
+get this to work is to uninstall rspec-core-2.x (or remove it from the
+current gemset if you use a tool that supports gemsets).
+
 ### Invalid Option: --tty
 
 The `--tty` option was [added in rspec-core-2.2.1](changelog), and is used
