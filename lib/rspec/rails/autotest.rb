@@ -51,11 +51,11 @@ class Autotest
       add_mapping(%r{\Aapp/views/(.*)\z}) { |_, m|
         files_matching %r{\Aspec/views/#{m[1]}_spec.rb\z}
       }
-      add_mapping(%r{\Aapp/controllers/(.*)\.rb\z}) { |_, m|
+      add_mapping(%r{\Aapp/controllers/(.*)_controller\.rb\z}) { |_, m|
         if m[1] == 'application'
-          files_matching %r{\Aspec/controllers/.*_spec\.rb\z}
+          files_matching %r{\Aspec/controllers/.*_controller_spec\.rb\z}
         else
-          ["spec/controllers/#{m[1]}_spec.rb"]
+          ["spec/controllers/#{m[1]}_controller_spec.rb"]
         end
       }
       add_mapping(%r{\Aapp/helpers/(.*)_helper\.rb\z}) { |_, m|
