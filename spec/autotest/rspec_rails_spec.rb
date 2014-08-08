@@ -26,7 +26,7 @@ describe Autotest::RailsRspec do
 
   describe 'mappings' do
     before do
-      rails_rspec_autotest.find_order = %w(spec/models/user_spec.rb spec/support/blueprints.rb spec/views/users/index_spec.rb)
+      rails_rspec_autotest.find_order = %w(spec/models/admin_spec.rb spec/models/user_spec.rb spec/support/blueprints.rb spec/views/users/index_spec.rb)
     end
 
     it 'runs model specs when support files change' do
@@ -34,9 +34,9 @@ describe Autotest::RailsRspec do
         include('spec/models/user_spec.rb'))
     end
 
-    it 'finds specs' do
-      expect(rails_rspec_autotest.test_files_for('spec/models/user_spec.rb')).to(
-        include('spec/models/user_spec.rb'))
+    it 'runs model spec when source file changes' do
+      expect(rails_rspec_autotest.test_files_for('spec/models/user_spec.rb')).to eq(
+        %w(spec/models/user_spec.rb))
     end
 
     describe 'when controllers exist' do
@@ -51,7 +51,6 @@ describe Autotest::RailsRspec do
       end
 
       it 'finds specific controller spec' do
-        rails_rspec_autotest.find_order = %w(spec/controllers/admin_controller_spec.rb spec/controllers/users_controller_spec.rb)
         expect(rails_rspec_autotest.test_files_for('app/controllers/users_controller.rb')).to eq(
           %w(spec/controllers/users_controller_spec.rb)
         )
