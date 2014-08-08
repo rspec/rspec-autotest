@@ -41,13 +41,20 @@ describe Autotest::RailsRspec do
 
     describe 'when controllers exist' do
       before do
-        rails_rspec_autotest.find_order = %w(spec/controllers/admin_controller_spec.rb spec/controllers/users_controller_spec.rb)
+        rails_rspec_autotest.find_order = %w(spec/controllers/admin_controller_spec.rb spec/controllers/unconstrained_spec.rb spec/controllers/users_controller_spec.rb)
       end
 
-      it 'finds all controller specs for default controller' do
-        expect(rails_rspec_autotest.test_files_for('app/controllers/application_controller.rb')).to eq(
-          %w(spec/controllers/admin_controller_spec.rb spec/controllers/users_controller_spec.rb)
-        )
+      describe 'for default controller' do
+        it 'finds all controller specs' do
+          expect(rails_rspec_autotest.test_files_for('app/controllers/application_controller.rb')).to eq(
+            %w(spec/controllers/admin_controller_spec.rb spec/controllers/unconstrained_spec.rb spec/controllers/users_controller_spec.rb)
+          )
+        end
+
+        it 'finds unconventionally named specs' do
+          expect(rails_rspec_autotest.test_files_for('app/controllers/application_controller.rb')).to(
+            include('spec/controllers/unconstrained_spec.rb'))
+        end
       end
 
       it 'finds specific controller spec' do
