@@ -52,7 +52,7 @@ class Autotest
         files_matching %r{\Aspec/views/#{m[1]}_spec.rb\z}
       }
       add_mapping(%r{\Aapp/controllers/(.*)\.rb\z}) { |_, m|
-        if m[1] == 'application'
+        if m[1] == 'application_controller'
           files_matching %r{\Aspec/controllers/.*_spec\.rb\z}
         else
           ["spec/controllers/#{m[1]}_spec.rb"]
