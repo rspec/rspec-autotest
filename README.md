@@ -37,9 +37,16 @@ generate rspec:install` command.
 ### Autotest style autotest/rspec_rspec2 doesn't seem to exist. Aborting.
 
 This happens if you're using rspec-3.x + rspec-autotest-1.x and you
-still have rspec-core-2.x installed. Unfortunately, the only way to
-get this to work is to uninstall rspec-core-2.x (or remove it from the
-current gemset if you use a tool that supports gemsets).
+still have rspec-core-2.x installed. You have two options to resolve this issue:
+
+1. Uninstall rspec-core-2.x (or remove it from the current gemset if you use a
+tool that supports gemsets).
+1. Pass a `--style` flag to the `autotest` executable, which should resolve the
+version of rspec correctly to 3.x:
+
+```shell
+autotest --style rspec
+```
 
 ### Invalid Option: --tty
 
