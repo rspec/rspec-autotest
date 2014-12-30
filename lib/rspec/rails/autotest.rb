@@ -22,7 +22,7 @@
 
 $:.push(*Dir['vendor/rails/*/lib'])
 
-require 'active_support/core_ext'
+require 'active_support/all'
 require 'autotest/rspec'
 
 class Autotest
