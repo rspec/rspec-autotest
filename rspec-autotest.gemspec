@@ -12,8 +12,6 @@ Gem::Specification.new do |spec|
   spec.description   = 'RSpec Autotest integration'
   spec.license       = 'MIT'
 
-  spec.rubyforge_project  = 'rspec'
-
   spec.files         = `git ls-files`.split($/)
   spec.test_files    = spec.files.grep(%r{^spec/})
   spec.rdoc_options  = ['--charset=UTF-8']
