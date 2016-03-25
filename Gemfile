@@ -21,4 +21,8 @@ platforms :ruby do
   gem 'github-markup', '0.7.2'
 end
 
+if RUBY_VERSION.to_f < 1.9
+  gem 'i18n', '~> 0.6.0'
+end
+
 eval File.read('Gemfile-custom') if File.exist?('Gemfile-custom')
