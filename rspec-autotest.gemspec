@@ -30,11 +30,12 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rspec-core', '>= 2.99.0.beta1', '< 4.0.0'
 
   spec.add_development_dependency 'bundler',        '>= 1.3'
-  if RUBY_VERSION.to_f > 1.9
-    spec.add_development_dependency 'rake',           '>= 10.0.0'
-  else
+  if RUBY_VERSION.to_f < 2.0
     spec.add_development_dependency 'rake',           '~> 10.0'
+    spec.add_development_dependency 'activesupport',  '~> 3.0'
+  else
+    spec.add_development_dependency 'rake',           '>= 10.0.0'
+    spec.add_development_dependency 'activesupport',  '~> 4.1'
   end
   spec.add_development_dependency 'ZenTest',        '>= 4.6'
-  spec.add_development_dependency 'activesupport',  '~> 4.1'
 end
