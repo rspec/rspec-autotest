@@ -1,4 +1,4 @@
-# rspec-autotest [![Build Status](https://secure.travis-ci.org/rspec/rspec-autotest.svg?branch=master)](http://travis-ci.org/rspec/rspec-autotest) [![Code Climate](https://codeclimate.com/github/rspec/rspec-autotest.svg)](https://codeclimate.com/github/rspec/rspec-autotest) [![Coverage Status](https://coveralls.io/repos/rspec/rspec-autotest/badge.png?branch=master)](https://coveralls.io/r/rspec/rspec-autotest?branch=master)
+# rspec-autotest [![Build Status](https://secure.travis-ci.org/rspec/rspec-autotest.svg?branch=master)](http://travis-ci.org/rspec/rspec-autotest) [![Code Climate](https://codeclimate.com/github/rspec/rspec-autotest.svg)](https://codeclimate.com/github/rspec/rspec-autotest) [![Coverage Status](https://coveralls.io/repos/rspec/rspec-autotest/badge.svg?branch=master)](https://coveralls.io/r/rspec/rspec-autotest?branch=master)
 
 `rspec-autotest` provides integration between autotest and RSpec; Autotest is not included
 in this gem and can be installed via the `autotest-standalone` or `zentest` gems.
