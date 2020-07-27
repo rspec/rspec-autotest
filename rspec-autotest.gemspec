@@ -35,7 +35,7 @@ Gem::Specification.new do |spec|
     spec.add_development_dependency 'activesupport',  '~> 3.0'
   else
     spec.add_development_dependency 'rake',           '>= 10.0.0'
-    spec.add_development_dependency 'activesupport',  '~> 4.1', '>= 4.1.11'
+    spec.add_development_dependency 'activesupport',  '>= 4.1.11'
   end
-  spec.add_development_dependency 'ZenTest',        '>= 4.6'
+  spec.add_development_dependency 'ZenTest',        '>= 4.6', '< 4.12'
 end
