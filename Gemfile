@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gemspec
 
 %w[rspec rspec-core rspec-expectations rspec-mocks rspec-support].each do |lib|
-  branch = ENV.fetch('RSPEC_BRANCH', 'master')
+  branch = ENV.fetch('RSPEC_BRANCH', 'main')
   next if branch == '2-99-maintenance' && lib == 'rspec-support'
 
   library_path = File.expand_path("../../#{lib}", __FILE__)
