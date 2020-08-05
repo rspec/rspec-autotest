@@ -29,13 +29,23 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rspec-core', '>= 2.99.0.beta1', '< 4.0.0'
 
-  spec.add_development_dependency 'bundler',        '>= 1.3'
+  spec.add_development_dependency 'bundler', '>= 1.3'
+
+  # Select compatible version of active support.
   if RUBY_VERSION.to_f < 2.0
-    spec.add_development_dependency 'rake',           '~> 10.0'
-    spec.add_development_dependency 'activesupport',  '~> 3.0'
+    spec.add_development_dependency 'activesupport', '~> 3.0'
   else
-    spec.add_development_dependency 'rake',           '>= 10.0.0'
     spec.add_development_dependency 'activesupport',  '>= 4.1.11'
   end
-  spec.add_development_dependency 'ZenTest',        '>= 4.6', '< 4.12'
+
+  # Keep rake as up to date as we can
+  if RUBY_VERSION <= "1.9.3"
+    spec.add_development_dependency 'rake', '~> 10.0'
+  elsif RUBY_VERSION.to_f < 2.0
+    spec.add_development_dependency 'rake', '~> 11.0'
+  else
+    spec.add_development_dependency 'rake', '> 12.3.2'
+  end
+
+  spec.add_development_dependency 'ZenTest', '>= 4.6', '< 4.12'
 end
